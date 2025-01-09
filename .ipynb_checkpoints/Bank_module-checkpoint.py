@@ -60,20 +60,22 @@ class Bank:
     def __init__(self):
         self.__admin_username = "admin"
         self.__admin_password = "123456"
-
+    
+    # @classmethod
     def auth_admin(self, username, password):
         if self.__admin_username == username and self.__admin_password == passwrod:
             return True
         else:
             False
 
-    def create_acccount (self,acc_title,acc_number):
+    # @classmethod
+    def create_account (self,acc_title,acc_number):
         if not acc_title or not acc_number:
             return "Account title or number is required"
 
         self._accounts[acc_number] = {"title": acc_title, "transactions": []}
 
-    @classmethod
+    # @classmethod
     def get_total_deposits(cls):
         deposits_amount = 0
 
@@ -88,7 +90,7 @@ class Bank:
 
         return deposits_amount
         
-    @classmethod
+    # @classmethod
     def transfer_money(cls, sender_acc_no, receiver_acc_no, amount):
         try:
             sender_acc = cls._accounts[sender_acc_no]
@@ -117,7 +119,7 @@ class Bank:
         else:
             return "Amount send successfully"
     
-    @classmethod
+    # @classmethod
     def get_account(cls, acc_no):
         try:
             cls._accounts[acc_no]
@@ -126,10 +128,12 @@ class Bank:
         else:
             return cls._accounts[acc_no]
         
-    @classmethod
+    # @classmethod
     def get_all_accounts(cls):
         return cls._accounts
-
+    @classmethod
+    def all_acc_no(cls):
+        return list(cls._accounts.keys())
 class BankAccount:
 
     @staticmethod
